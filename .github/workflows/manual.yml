@@ -1,0 +1,21 @@
+name: Python Script Workflow # 工作流的名称，在 GitHub 界面会显示这个名字
+
+on: 
+  push: 
+    branches: 
+      - main # 触发条件：当向 main 分支推送代码时自动运行
+
+jobs: 
+  run-python-script: 
+    runs-on: ubuntu-latest # 运行环境：使用最新版本的 Ubuntu 虚拟机
+    steps: 
+      - name: Checkout code 
+        uses: actions/checkout@v2 # 步骤1：将 GitHub 仓库的代码拉取到运行环境中
+
+      - name: Set up Python 
+        uses: actions/setup-python@v5 # 步骤2：配置 Python 环境
+        with: 
+          python-version: '3.10' # 指定需要使用的 Python 版本
+
+      - name: Run Python script 
+        run: python getlist.py # 步骤3：执行你的 Python 脚本（请将 python.py 替换为你的实际文件名）
