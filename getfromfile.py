@@ -12,7 +12,7 @@ import sys
 os.environ['PYTHONUNBUFFERED'] = '1'
 list_file = f"listfile.txt"
 
-OUTPUT_DIR = r"C:\Program Files (x86)\Kingsoft\WPS Office\Python\uploads"
+OUTPUT_DIR = r"./uploads"
 TMP_DIR = os.path.join(OUTPUT_DIR, r"tmp")
 
 def safe_filename(name):
