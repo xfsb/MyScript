@@ -19,6 +19,9 @@ jobs:
       
       - name: Install dependencies
         run: pip install -r requirements.txt # 提前准备好 requirements.txt 文件
+
+      - name: Ensure browsers are installed
+        run: python -m playwright install --with-deps
       
       - name: Run Python script 
         run: python getlist.py 1 # 步骤3：执行你的 Python 脚本（请将 python.py 替换为你的实际文件名）
