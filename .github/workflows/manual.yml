@@ -25,3 +25,9 @@ jobs:
       
       - name: Run Python script 
         run: python getlist.py 1 # 步骤3：执行你的 Python 脚本（请将 python.py 替换为你的实际文件名）
+
+      - name: Upload generated files
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-generated-files  # 给工件起个名字
+          path: ./uploads/    # 指定 Python 生成文件的目录
