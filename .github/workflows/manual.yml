@@ -27,5 +27,5 @@ jobs:
       - name: Upload generated files
         uses: actions/upload-artifact@v4
         with:
-          name: my-generated-files  # 给工件起个名字
+          name: uploads  # 给工件起个名字
           path: ./uploads/    # 指定 Python 生成文件的目录
