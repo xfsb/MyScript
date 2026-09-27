@@ -39,7 +39,7 @@ async def preload_and_reset(page):
                     window.scrollTo(0, 0);  // 滚回顶部
                     resolve();
                 }
-            }, 800);
+            }, 500);
         });
     }''')
     await page.wait_for_timeout(2*5000)
