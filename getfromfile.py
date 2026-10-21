@@ -152,6 +152,10 @@ async def main():
                                             img_success = 0
                                 if img_success == 0:
                                     break
+                        else:
+                            pring(f"页面没有图片")
+                            img_success = 0
+                            failed += 1
                         
                         if img_success == 0:
                             continue
