@@ -133,6 +133,11 @@ async def main():
                                     try:
                                         img_path = os.path.join(TMP_DIR, f"{img_count:03d}.jpg")
                                         await screenshot_one(page, img_url, img_path)
+
+                                        img_size = os.path.getsize(img_path)
+                                        if img_size < 1024:
+                                            raise ValueError(f"文件过小 ({img_size} bytes < 1024)")
+
                                         break
                                     except Exception as e:
                                         if attempt < 4:
