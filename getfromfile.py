@@ -118,17 +118,16 @@ async def main():
 
                         await preload_and_reset(page)
 
-"""
                         attachments = await page.evaluate(r'''() => {
                             const links = document.querySelectorAll('a[href$=".jpg"]');
                             return Array.from(links).filter(a => a.textContent.includes('下载附件')).map(a => a.href);
                         }''')
-"""
 
-                        attachments = await page.evaluate(r'''() => {
-                            const imgs = document.querySelectorAll('img[src*="tu.djhdhs.us"]');
-                            return Array.from(imgs).map(img => img.src);
-                        }''')
+                        if not attachments:
+                            attachments = await page.evaluate(r'''() => {
+                                const imgs = document.querySelectorAll('img[src*="tu.djhdhs.us"]');
+                                return Array.from(imgs).map(img => img.src);
+                            }''')
 
                         img_success = 1
                         img_count = 0
@@ -154,7 +153,10 @@ async def main():
                                             img_success = 0
                                 if img_success == 0:
                                     break
-                        
+                        else:
+                            print(f"{list_count:03d}：{pdf_path}   未找到附件图片")
+                            continue                        
+
                         if img_success == 0:
                             continue
 
