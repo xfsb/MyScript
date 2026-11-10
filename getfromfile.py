@@ -118,15 +118,22 @@ async def main():
 
                         await preload_and_reset(page)
 
+'''
                         attachments = await page.evaluate(r'''() => {
                             const links = document.querySelectorAll('a[href$=".jpg"]');
                             return Array.from(links).filter(a => a.textContent.includes('下载附件')).map(a => a.href);
                         }''')
+'''
+
+                        attachments = await page.evaluate(r'''() => {
+                            const imgs = document.querySelectorAll('img[src*="tu.djhdhs.us"]');
+                            return Array.from(imgs).map(img => img.src);
+                        }''')
 
                         img_success = 1
+                        img_count = 0
                         if attachments:
                             images = []
-                            img_count = 0
                             for img_url in attachments:
                                 img_count += 1
                                 for attempt in range(5):
