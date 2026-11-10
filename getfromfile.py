@@ -118,12 +118,12 @@ async def main():
 
                         await preload_and_reset(page)
 
-'''
+"""
                         attachments = await page.evaluate(r'''() => {
                             const links = document.querySelectorAll('a[href$=".jpg"]');
                             return Array.from(links).filter(a => a.textContent.includes('下载附件')).map(a => a.href);
                         }''')
-'''
+"""
 
                         attachments = await page.evaluate(r'''() => {
                             const imgs = document.querySelectorAll('img[src*="tu.djhdhs.us"]');
