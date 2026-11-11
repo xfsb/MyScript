@@ -155,6 +155,7 @@ async def main():
                                     break
                         else:
                             print(f"{list_count:03d}：{pdf_path}   未找到附件图片")
+                            failed += 1
                             continue                        
 
                         if img_success == 0:
